@@ -1,1 +1,23 @@
-[{"url":"https://github.com/solana-labs/solana","username":"solana-labs","name":"solana","description":"Web-Scale Blockchain","metrics":{"quality":950,"hourlyEarnings":5000},"evaluatedAt":"2024-01-01T00:00:00.000Z"}]
+[
+  {
+    "url": "https://github.com/solana-labs/solana",
+    "username": "solana-labs",
+    "name": "solana",
+    "description": "Web-Scale Blockchain",
+    "metrics": {
+      "quality": 950,
+      "hourlyEarnings": 5000
+    },
+    "evaluatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "url": "https://github.com/test/updated",
+    "username": "test",
+    "name": "updated",
+    "metrics": {
+      "quality": 200,
+      "hourlyEarnings": 20
+    },
+    "updatedAt": "2025-11-11T13:58:43.861Z"
+  }
+]
