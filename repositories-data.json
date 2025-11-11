@@ -82,5 +82,26 @@
     },
     "evaluatedAt": "2025-11-11T15:48:21.509Z",
     "combinedScore": 1150
+  },
+  {
+    "url": "https://github.com/sindresorhus/awesome",
+    "username": "sindresorhus",
+    "name": "awesome",
+    "description": "😎 Awesome lists about all kinds of interesting topics",
+    "solanaWallet": "BFq168vZUheucWGECS3NWp25WabfKaZb9Lurh362VZ3K",
+    "metrics": {
+      "uniqueness": 90,
+      "quality": 883,
+      "marketDemand": 100,
+      "hourlyEarnings": 19270,
+      "rentalPrice": 462480,
+      "royaltyRate": 5,
+      "annualRevenue": 202566240,
+      "stars": 413697,
+      "forks": 32191,
+      "watchers": 413697
+    },
+    "evaluatedAt": "2025-11-11T15:49:08.637Z",
+    "combinedScore": 1075.7
   }
 ]
