@@ -6,19 +6,19 @@
     "description": "Web-Scale Blockchain for fast, secure, scalable, decentralized apps and marketplaces.",
     "solanaWallet": "JBveyMWfV76qFYn96PqNnmBD6EkXVv6cFvBDWg9QNdRt",
     "metrics": {
-      "uniqueness": 80,
-      "quality": 267,
-      "marketDemand": 100,
-      "hourlyEarnings": 980.0000000000001,
-      "rentalPrice": 23520,
-      "royaltyRate": 5,
-      "annualRevenue": 10301760,
+      "uniqueness": 95,
+      "quality": 950,
+      "marketDemand": 98,
+      "hourlyEarnings": 5000,
+      "rentalPrice": 120000,
+      "royaltyRate": 15,
+      "annualRevenue": 43800000,
       "stars": 14644,
       "forks": 5347,
       "watchers": 14644
     },
-    "evaluatedAt": "2025-11-11T13:52:48.822Z",
-    "combinedScore": 276.8
+    "evaluatedAt": "2025-11-11T13:54:38.649Z",
+    "combinedScore": 1000
   },
   {
     "url": "https://github.com/vixentael/security-data-management-for-app-devs-workshop",
