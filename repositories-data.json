@@ -40,5 +40,15 @@
     },
     "evaluatedAt": "2025-11-11T13:16:31.458Z",
     "combinedScore": 302.3
+  },
+  {
+    "url": "https://github.com/test/updated",
+    "username": "test",
+    "name": "updated",
+    "metrics": {
+      "quality": 200,
+      "hourlyEarnings": 20
+    },
+    "updatedAt": "2025-11-11T14:15:12.913Z"
   }
 ]
