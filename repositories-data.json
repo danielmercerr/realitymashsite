@@ -42,13 +42,24 @@
     "combinedScore": 302.3
   },
   {
-    "url": "https://github.com/test/updated",
-    "username": "test",
-    "name": "updated",
+    "url": "https://github.com/cossacklabs/repometascore",
+    "username": "cossacklabs",
+    "name": "repometascore",
+    "description": "repometascore (aka repository metadata scoring) analyzes metadata of the given repository, collects info about its contributors, and outputs the risk level.",
+    "solanaWallet": "",
     "metrics": {
-      "quality": 200,
-      "hourlyEarnings": 20
+      "uniqueness": 95,
+      "quality": 328,
+      "marketDemand": 51,
+      "hourlyEarnings": 50,
+      "rentalPrice": 1200,
+      "royaltyRate": 5,
+      "annualRevenue": 525600,
+      "stars": 34,
+      "forks": 0,
+      "watchers": 34
     },
-    "updatedAt": "2025-11-11T14:15:12.913Z"
+    "evaluatedAt": "2025-11-11T14:23:52.399Z",
+    "combinedScore": 328.5
   }
 ]
