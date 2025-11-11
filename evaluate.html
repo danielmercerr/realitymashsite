@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluate Your Repository - RealityMash</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-teal: #35d0ba;
+            --color-teal-accent: rgba(53, 208, 186, 0.9);
+            --color-accent-rgb: 53, 208, 186;
+            --color-background: #000000;
+            --color-surface: #000000;
+            --color-text: #ffffff;
+            --color-text-secondary: rgba(255, 255, 255, 0.8);
+            --color-primary: var(--color-teal);
+            --color-primary-hover: var(--color-teal-accent);
+            --color-border: rgba(53, 208, 186, 0.3);
+            --color-card-border: rgba(53, 208, 186, 0.2);
+            --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --space-48: 48px;
+            --space-64: 64px;
+            --radius-base: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            overflow-y: overlay;
+            position: relative;
+            font-weight: 400;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, #3f3030, transparent),
+                radial-gradient(2px 2px at 60% 70%, #ffffff, transparent),
+                radial-gradient(1px 1px at 50% 50%, #ffffff, transparent),
+                radial-gradient(1px 1px at 80% 10%, #ffffff, transparent),
+                radial-gradient(2px 2px at 90% 40%, #ffffff, transparent),
+                radial-gradient(1px 1px at 33% 60%, #ffffff, transparent),
+                radial-gradient(2px 2px at 15% 80%, #ffffff, transparent),
+                radial-gradient(1px 1px at 70% 20%, #ffffff, transparent),
+                radial-gradient(2px 2px at 40% 90%, #ffffff, transparent),
+                radial-gradient(1px 1px at 25% 15%, #ffffff, transparent),
+                radial-gradient(2px 2px at 85% 60%, #ffffff, transparent),
+                radial-gradient(1px 1px at 55% 85%, #ffffff, transparent),
+                radial-gradient(1px 1px at 10% 50%, #ffffff, transparent),
+                radial-gradient(2px 2px at 95% 80%, #ffffff, transparent),
+                radial-gradient(1px 1px at 45% 25%, #ffffff, transparent),
+                radial-gradient(2px 2px at 5% 35%, #ffffff, transparent),
+                radial-gradient(1px 1px at 65% 55%, #ffffff, transparent),
+                radial-gradient(2px 2px at 75% 25%, #ffffff, transparent),
+                radial-gradient(1px 1px at 35% 75%, #ffffff, transparent),
+                radial-gradient(2px 2px at 55% 45%, #ffffff, transparent),
+                radial-gradient(1px 1px at 12% 65%, #ffffff, transparent),
+                radial-gradient(2px 2px at 88% 35%, #ffffff, transparent),
+                radial-gradient(1px 1px at 28% 85%, #ffffff, transparent),
+                radial-gradient(2px 2px at 72% 15%, #ffffff, transparent),
+                radial-gradient(1px 1px at 48% 95%, #ffffff, transparent),
+                radial-gradient(2px 2px at 92% 65%, #ffffff, transparent),
+                radial-gradient(1px 1px at 18% 45%, #ffffff, transparent),
+                radial-gradient(2px 2px at 62% 85%, #ffffff, transparent),
+                radial-gradient(1px 1px at 38% 55%, #ffffff, transparent),
+                radial-gradient(2px 2px at 82% 75%, #ffffff, transparent);
+            background-repeat: repeat;
+            background-size: 150% 150%;
+            animation: starMove 50s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.9;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            background-image: 
+                radial-gradient(1px 1px at 30% 20%, rgba(53, 208, 186, 0.8), transparent),
+                radial-gradient(1px 1px at 50% 60%, rgba(53, 208, 186, 0.6), transparent),
+                radial-gradient(2px 2px at 70% 40%, rgba(53, 208, 186, 0.9), transparent),
+                radial-gradient(1px 1px at 90% 80%, rgba(53, 208, 186, 0.7), transparent),
+                radial-gradient(1px 1px at 10% 90%, rgba(53, 208, 186, 0.5), transparent),
+                radial-gradient(2px 2px at 45% 10%, rgba(53, 208, 186, 0.8), transparent),
+                radial-gradient(1px 1px at 65% 30%, rgba(53, 208, 186, 0.6), transparent),
+                radial-gradient(1px 1px at 25% 70%, rgba(53, 208, 186, 0.7), transparent),
+                radial-gradient(2px 2px at 80% 50%, rgba(53, 208, 186, 0.9), transparent),
+                radial-gradient(1px 1px at 15% 40%, rgba(53, 208, 186, 0.5), transparent),
+                radial-gradient(2px 2px at 35% 25%, rgba(53, 208, 186, 0.8), transparent),
+                radial-gradient(1px 1px at 75% 55%, rgba(53, 208, 186, 0.6), transparent),
+                radial-gradient(2px 2px at 55% 85%, rgba(53, 208, 186, 0.9), transparent),
+                radial-gradient(1px 1px at 22% 65%, rgba(53, 208, 186, 0.7), transparent),
+                radial-gradient(2px 2px at 68% 35%, rgba(53, 208, 186, 0.8), transparent),
+                radial-gradient(1px 1px at 42% 75%, rgba(53, 208, 186, 0.6), transparent),
+                radial-gradient(2px 2px at 88% 15%, rgba(53, 208, 186, 0.9), transparent),
+                radial-gradient(1px 1px at 18% 95%, rgba(53, 208, 186, 0.7), transparent),
+                radial-gradient(2px 2px at 58% 85%, rgba(53, 208, 186, 0.8), transparent),
+                radial-gradient(1px 1px at 32% 45%, rgba(53, 208, 186, 0.6), transparent),
+                radial-gradient(2px 2px at 78% 65%, rgba(53, 208, 186, 0.9), transparent),
+                radial-gradient(1px 1px at 52% 85%, rgba(53, 208, 186, 0.7), transparent),
+                radial-gradient(2px 2px at 92% 25%, rgba(53, 208, 186, 0.8), transparent),
+                radial-gradient(1px 1px at 8% 55%, rgba(53, 208, 186, 0.6), transparent),
+                radial-gradient(2px 2px at 62% 75%, rgba(53, 208, 186, 0.9), transparent);
+            background-repeat: repeat;
+            background-size: 120% 120%;
+            animation: starMove 80s linear infinite reverse;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        @keyframes starMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-24);
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid rgba(53, 208, 186, 0.2);
+            padding: var(--space-16) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .btn {
+            padding: var(--space-12) var(--space-24);
+            border-radius: var(--radius-base);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: #000000;
+            border: 1px solid var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(53, 208, 186, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--color-primary);
+            color: #ffffff;
+            border-radius: var(--radius-base);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-primary);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(53, 208, 186, 0.2);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(53, 208, 186, 0.3);
+        }
+
+        #import-file-input {
+            display: none;
+        }
+
+        label.btn {
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .repository-evaluator {
+            padding: var(--space-32) var(--space-24);
+            background: transparent;
+            position: relative;
+            z-index: 1;
+            --section-color: rgba(150, 100, 220, 1);
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .repository-evaluator .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-24);
+            box-sizing: border-box;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: var(--space-32);
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--section-color);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .repo-evaluator-form {
+            max-width: 700px;
+            margin: 0 auto var(--space-48);
+            background: rgba(53, 208, 186, 0.05);
+            padding: var(--space-32);
+            border-radius: 16px;
+            border: 1px solid rgba(53, 208, 186, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .repo-evaluator-form:hover {
+            border-color: rgba(53, 208, 186, 0.4);
+            background: rgba(53, 208, 186, 0.08);
+            box-shadow: 0 0 30px rgba(53, 208, 186, 0.2);
+        }
+
+        .repo-input-wrapper {
+            display: flex;
+            gap: var(--space-16);
+            margin-bottom: var(--space-24);
+        }
+
+        .repo-input-wrapper input {
+            flex: 1;
+            padding: var(--space-16) var(--space-20);
+            border-radius: 12px;
+            border: 1px solid var(--color-primary);
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        .repo-input-wrapper input:focus {
+            border-color: var(--color-primary);
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(53, 208, 186, 0.3);
+        }
+
+        .repo-input-wrapper input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .repo-evaluator-form .btn-primary {
+            padding: var(--space-16) var(--space-32);
+            white-space: nowrap;
+        }
+
+        .repo-results {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .repo-results.active {
+            display: block;
+        }
+
+        .repo-results-card {
+            background: rgba(53, 208, 186, 0.05);
+            border: 1px solid rgba(53, 208, 186, 0.2);
+            border-radius: 16px;
+            padding: var(--space-32);
+            backdrop-filter: blur(10px);
+            margin-bottom: var(--space-32);
+        }
+
+        .repo-info {
+            margin-bottom: var(--space-32);
+        }
+
+        .repo-info h3 {
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: var(--space-16);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .repo-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-8);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-24);
+            margin-top: var(--space-32);
+        }
+
+        .metric-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(53, 208, 186, 0.3);
+            border-radius: 12px;
+            padding: var(--space-24);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(53, 208, 186, 0.3);
+        }
+
+        .metric-card h4 {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-12);
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--space-8);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .metric-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(53, 208, 186, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: var(--space-12);
+        }
+
+        .metric-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), rgba(53, 208, 186, 0.8));
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .loading-indicator {
+            display: none;
+            text-align: center;
+            padding: var(--space-32);
+            color: var(--color-primary);
+        }
+
+        .loading-indicator.active {
+            display: block;
+        }
+
+        .loading-indicator::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .repositories-table-section {
+            margin-top: var(--space-64);
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 var(--space-24);
+            box-sizing: border-box;
+        }
+
+        .repositories-table-section h3 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: var(--space-32);
+            text-align: center;
+            color: var(--color-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .repositories-table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            background: rgba(53, 208, 186, 0.05);
+            border: 1px solid rgba(53, 208, 186, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+        }
+
+        .repositories-table thead {
+            background: rgba(53, 208, 186, 0.1);
+        }
+
+        .repositories-table th {
+            padding: var(--space-16) var(--space-20);
+            text-align: left;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(53, 208, 186, 0.3);
+        }
+
+        .repositories-table th:first-child {
+            width: 60px;
+            text-align: center;
+        }
+
+        .repositories-table th:nth-child(2) {
+            min-width: 200px;
+        }
+
+        .repositories-table td {
+            padding: var(--space-16) var(--space-20);
+            border-bottom: 1px solid rgba(53, 208, 186, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+
+        .repositories-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .repositories-table tbody tr:hover {
+            background: rgba(53, 208, 186, 0.1);
+        }
+
+        .repositories-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rank-cell {
+            text-align: center;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--color-primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .rank-cell.rank-1 {
+            color: #FFD700;
+            font-size: 24px;
+        }
+
+        .rank-cell.rank-2 {
+            color: #C0C0C0;
+            font-size: 22px;
+        }
+
+        .rank-cell.rank-3 {
+            color: #CD7F32;
+            font-size: 20px;
+        }
+
+        .repo-name-cell {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .repo-name-cell a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .repo-name-cell a:hover {
+            text-decoration: underline;
+            color: var(--color-primary-hover);
+        }
+
+        .score-cell {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .empty-table-message {
+            text-align: center;
+            padding: var(--space-48);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+        }
+
+        #table-footer-message {
+            margin-top: var(--space-24);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            padding: var(--space-16);
+            background: rgba(53, 208, 186, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(53, 208, 186, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .repositories-table {
+                font-size: 12px;
+            }
+
+            .repositories-table th,
+            .repositories-table td {
+                padding: var(--space-12) var(--space-8);
+            }
+
+            .repositories-table th:nth-child(3),
+            .repositories-table td:nth-child(3),
+            .repositories-table th:nth-child(6),
+            .repositories-table th:nth-child(7),
+            .repositories-table td:nth-child(6),
+            .repositories-table td:nth-child(7) {
+                display: none;
+            }
+
+            .rank-cell {
+                font-size: 16px;
+            }
+
+            .rank-cell.rank-1 {
+                font-size: 20px;
+            }
+
+            .rank-cell.rank-2 {
+                font-size: 18px;
+            }
+
+            .rank-cell.rank-3 {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            main {
+                min-height: calc(100vh - 70px);
+                padding: var(--space-24) 0;
+            }
+
+            .repository-evaluator {
+                padding: var(--space-24) var(--space-16);
+            }
+
+            .container {
+                padding: 0 var(--space-16);
+            }
+
+            .repo-input-wrapper {
+                flex-direction: column;
+            }
+
+            .repo-evaluator-form .btn-primary {
+                width: 100%;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .repo-evaluator-form {
+                padding: var(--space-20);
+            }
+
+            .repo-results-card {
+                padding: var(--space-20);
+            }
+
+            .metric-card {
+                padding: var(--space-20);
+            }
+
+            .metric-value {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                min-height: calc(100vh - 60px);
+                padding: var(--space-16) 0;
+            }
+
+            .repository-evaluator {
+                padding: var(--space-16);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="RealityMash Logo">
+                RealityMash
+            </a>
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="repo-evaluator" class="repository-evaluator">
+            <div class="container">
+                <h2 class="section-title">Evaluate Your GitHub Repository</h2>
+                <p style="text-align: center; color: rgba(255,255,255,0.8); margin-bottom: var(--space-32); font-size: 18px;">
+                    Enter your GitHub repository URL to get an instant evaluation of its potential value, uniqueness, and earning potential on RealityMash.
+                </p>
+                
+                <div class="repo-evaluator-form">
+                    <div class="repo-input-wrapper">
+                        <input type="url" id="repo-url-input" placeholder="https://github.com/username/repository" required>
+                        <button type="button" class="btn btn-primary" onclick="evaluateRepository()">Evaluate</button>
+                    </div>
+                    <div style="margin-top: var(--space-16);">
+                        <label for="sol-wallet-input" style="display: block; color: rgba(255, 255, 255, 0.8); margin-bottom: var(--space-8); font-size: 14px;">Solana Wallet Address (optional):</label>
+                        <input 
+                            type="text" 
+                            id="sol-wallet-input" 
+                            placeholder="Enter your Solana wallet address"
+                            style="width: 100%; padding: var(--space-12) var(--space-16); border-radius: 8px; border: 1px solid var(--color-primary); background: rgba(0, 0, 0, 0.6); color: #ffffff; font-size: 14px; outline: none; transition: all 0.3s ease; -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text;"
+                        >
+                    </div>
+                    <div class="loading-indicator" id="repo-loading">Analyzing repository</div>
+                </div>
+
+                <div class="repo-results" id="repo-results">
+                    <div class="repo-results-card">
+                        <div class="repo-info">
+                            <h3 id="repo-name">Repository Name</h3>
+                            <p id="repo-description">Repository description</p>
+                            <p style="margin-top: var(--space-16);">
+                                <a href="#" id="repo-link" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">View on GitHub →</a>
+                            </p>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <h4>Uniqueness Score</h4>
+                                <div class="metric-value" id="uniqueness-score">0%</div>
+                                <div class="metric-label">How unique is this codebase</div>
+                                <div class="metric-bar">
+                                    <div class="metric-bar-fill" id="uniqueness-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <h4>Potential Earnings</h4>
+                                <div class="metric-value" id="potential-earnings">0 $RMASH</div>
+                                <div class="metric-label">Estimated hourly passive income</div>
+                                <div class="metric-bar">
+                                    <div class="metric-bar-fill" id="earnings-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <h4>Rental Price</h4>
+                                <div class="metric-value" id="rental-price">0 $RMASH</div>
+                                <div class="metric-label">Per usage/rental</div>
+                                <div class="metric-bar">
+                                    <div class="metric-bar-fill" id="rental-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <h4>Quality Score</h4>
+                                <div class="metric-value" id="quality-score">0/1000</div>
+                                <div class="metric-label">Code quality and maintainability</div>
+                                <div class="metric-bar">
+                                    <div class="metric-bar-fill" id="quality-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <h4>Market Demand</h4>
+                                <div class="metric-value" id="market-demand">0%</div>
+                                <div class="metric-label">Estimated demand in marketplace</div>
+                                <div class="metric-bar">
+                                    <div class="metric-bar-fill" id="demand-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <h4>Royalty Rate</h4>
+                                <div class="metric-value" id="royalty-rate">5%</div>
+                                <div class="metric-label">Royalty percentage per usage</div>
+                                <div class="metric-bar">
+                                    <div class="metric-bar-fill" id="royalty-bar" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: var(--space-32); padding-top: var(--space-24); border-top: 1px solid rgba(53, 208, 186, 0.2);">
+                            <h4 style="color: var(--color-primary); margin-bottom: var(--space-16); font-family: 'Orbitron', sans-serif;">Estimated Annual Revenue</h4>
+                            <div style="font-size: 36px; font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-8); font-family: 'Orbitron', sans-serif;" id="annual-revenue">0 $RMASH</div>
+                            <p style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">
+                                Based on estimated usage frequency and market demand
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="repositories-table-section" id="repositories-table-section">
+                    <h3>Top Repositories Ranking</h3>
+                    <table class="repositories-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Repository</th>
+                                <th>Solana Wallet</th>
+                                <th>Quality Score</th>
+                                <th>Potential Earnings</th>
+                                <th>Uniqueness</th>
+                                <th>Market Demand</th>
+                            </tr>
+                        </thead>
+                        <tbody id="repositories-table-body">
+                            <tr>
+                                <td colspan="7" class="empty-table-message">No repositories evaluated yet. Evaluate your first repository to see the ranking!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="table-footer-message" style="margin-top: var(--space-24); text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 14px; display: none;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="repositories-data.js"></script>
+    <script>
+        // Repository Evaluator Function
+        function evaluateRepository() {
+            const repoUrlInput = document.getElementById('repo-url-input');
+            const repoUrl = repoUrlInput.value.trim();
+            const loadingIndicator = document.getElementById('repo-loading');
+            const resultsDiv = document.getElementById('repo-results');
+
+            // Validate GitHub URL
+            if (!repoUrl) {
+                alert('Please enter a GitHub repository URL');
+                return;
+            }
+
+            const githubUrlPattern = /^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)(?:\/)?$/;
+            const match = repoUrl.match(githubUrlPattern);
+
+            if (!match) {
+                alert('Please enter a valid GitHub repository URL (e.g., https://github.com/username/repository)');
+                return;
+            }
+
+            const username = match[1];
+            const repoName = match[2];
+
+            // Show loading indicator
+            loadingIndicator.classList.add('active');
+            resultsDiv.classList.remove('active');
+            repoUrlInput.disabled = true;
+
+            // Fetch repository data from GitHub API
+            fetchRepositoryData(username, repoName, repoUrl);
+        }
+
+        async function fetchRepositoryData(username, repoName, repoUrl) {
+            const loadingIndicator = document.getElementById('repo-loading');
+            const resultsDiv = document.getElementById('repo-results');
+            const repoUrlInput = document.getElementById('repo-url-input');
+
+            try {
+                // Fetch repository data from GitHub API (public endpoint, no auth required)
+                const apiUrl = `https://api.github.com/repos/${username}/${repoName}`;
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        alert('Repository not found. Please check the URL and make sure the repository is public.');
+                    } else {
+                        alert('Error fetching repository data. Please try again later.');
+                    }
+                    loadingIndicator.classList.remove('active');
+                    repoUrlInput.disabled = false;
+                    return;
+                }
+
+                const repoData = await response.json();
+
+                // Calculate metrics based on real repository data
+                const metrics = calculateRepositoryMetrics(username, repoName, repoUrl, repoData);
+
+                // Display results
+                await displayRepositoryResults(repoUrl, username, repoName, metrics, repoData);
+
+                // Get wallet from input field
+                const walletInput = document.getElementById('sol-wallet-input');
+                const walletAddress = walletInput ? walletInput.value.trim() : '';
+
+                // Get existing wallet if repository was evaluated before and no new wallet entered
+                let existingWallet = walletAddress;
+                if (!walletAddress) {
+                    const existingRepos = await getRepositoriesData();
+                    const existingRepo = existingRepos.find(r => r.url === repoUrl);
+                    existingWallet = existingRepo ? existingRepo.solanaWallet || '' : '';
+                }
+
+                // Save repository to storage and update ranking
+                await saveRepositoryToFile(repoUrl, username, repoName, metrics, repoData, existingWallet);
+                await updateRankingTable();
+
+                // Hide loading indicator
+                loadingIndicator.classList.remove('active');
+                resultsDiv.classList.add('active');
+                repoUrlInput.disabled = false;
+
+                // Scroll to results, then to table after a short delay
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // Scroll to table after results are shown
+                setTimeout(() => {
+                    const tableSection = document.getElementById('repositories-table-section');
+                    if (tableSection) {
+                        tableSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }, 500);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to fetch repository data. Please check your connection and try again.');
+                loadingIndicator.classList.remove('active');
+                repoUrlInput.disabled = false;
+            }
+        }
+
+        function calculateRepositoryMetrics(username, repoName, repoUrl, repoData) {
+            // Calculate metrics based on real GitHub repository data
+            
+            // Get repository statistics
+            const forks = repoData.forks_count || 0;
+            const stars = repoData.stargazers_count || 0;
+            const watchers = repoData.watchers_count || 0;
+            const openIssues = repoData.open_issues_count || 0;
+            const size = repoData.size || 0; // in KB
+            const hasWiki = repoData.has_wiki ? 1 : 0;
+            const hasPages = repoData.has_pages ? 1 : 0;
+            const hasProjects = repoData.has_projects ? 1 : 0;
+            const createdAt = new Date(repoData.created_at);
+            const pushedAt = new Date(repoData.pushed_at);
+            const daysSinceUpdate = (new Date() - pushedAt) / (1000 * 60 * 60 * 24);
+            const ageInDays = (new Date() - createdAt) / (1000 * 60 * 60 * 24);
+            
+            // Calculate Quality Score (1-1000) based on multiple factors
+            let activityScore = 0;
+            if (daysSinceUpdate < 7) activityScore = 100;
+            else if (daysSinceUpdate < 30) activityScore = 85;
+            else if (daysSinceUpdate < 90) activityScore = 70;
+            else if (daysSinceUpdate < 180) activityScore = 50;
+            else if (daysSinceUpdate < 365) activityScore = 30;
+            else if (daysSinceUpdate < 730) activityScore = 15;
+            else activityScore = 5;
+            
+            let sizeScore = 0;
+            if (size > 50000) sizeScore = 100;
+            else if (size > 20000) sizeScore = 85;
+            else if (size > 10000) sizeScore = 70;
+            else if (size > 5000) sizeScore = 55;
+            else if (size > 2000) sizeScore = 40;
+            else if (size > 1000) sizeScore = 30;
+            else if (size > 500) sizeScore = 20;
+            else if (size > 100) sizeScore = 10;
+            else if (size > 0) sizeScore = 5;
+            
+            // Stars score (0-200 points)
+            let starsScore = 0;
+            if (stars >= 10000) starsScore = 200;
+            else if (stars >= 5000) starsScore = 180;
+            else if (stars >= 2000) starsScore = 160;
+            else if (stars >= 1000) starsScore = 140;
+            else if (stars >= 500) starsScore = 120;
+            else if (stars >= 200) starsScore = 100;
+            else if (stars >= 100) starsScore = 80;
+            else if (stars >= 50) starsScore = 60;
+            else if (stars >= 20) starsScore = 45;
+            else if (stars >= 10) starsScore = 35;
+            else if (stars >= 5) starsScore = 25;
+            else if (stars >= 1) starsScore = 15;
+            
+            // Forks score (0-150 points)
+            let forksScore = 0;
+            if (forks >= 5000) forksScore = 150;
+            else if (forks >= 2000) forksScore = 135;
+            else if (forks >= 1000) forksScore = 120;
+            else if (forks >= 500) forksScore = 100;
+            else if (forks >= 200) forksScore = 80;
+            else if (forks >= 100) forksScore = 65;
+            else if (forks >= 50) forksScore = 50;
+            else if (forks >= 20) forksScore = 35;
+            else if (forks >= 10) forksScore = 25;
+            else if (forks >= 5) forksScore = 18;
+            else if (forks >= 2) forksScore = 12;
+            else if (forks === 1) forksScore = 8;
+            
+            // Watchers score (0-100 points)
+            let watchersScore = 0;
+            if (watchers >= 5000) watchersScore = 100;
+            else if (watchers >= 2000) watchersScore = 85;
+            else if (watchers >= 1000) watchersScore = 70;
+            else if (watchers >= 500) watchersScore = 55;
+            else if (watchers >= 200) watchersScore = 40;
+            else if (watchers >= 100) watchersScore = 30;
+            else if (watchers >= 50) watchersScore = 22;
+            else if (watchers >= 20) watchersScore = 15;
+            else if (watchers >= 10) watchersScore = 10;
+            else if (watchers >= 5) watchersScore = 7;
+            else if (watchers >= 1) watchersScore = 4;
+            
+            // Features score (0-80 points)
+            let featuresScore = 0;
+            featuresScore += hasWiki ? 20 : 0;
+            featuresScore += hasPages ? 30 : 0;
+            featuresScore += hasProjects ? 15 : 0;
+            if (repoData.description && repoData.description.length > 20) featuresScore += 15;
+            
+            // Age and maintenance score (0-100 points)
+            let ageScore = 0;
+            if (ageInDays > 1095 && daysSinceUpdate < 365) ageScore = 100;
+            else if (ageInDays > 730 && daysSinceUpdate < 180) ageScore = 85;
+            else if (ageInDays > 365 && daysSinceUpdate < 90) ageScore = 70;
+            else if (ageInDays > 180) ageScore = 50;
+            else if (ageInDays > 90) ageScore = 30;
+            else if (ageInDays > 30) ageScore = 15;
+            else ageScore = 5;
+            
+            // Issues score (0-70 points)
+            let issuesScore = 70;
+            if (stars > 0) {
+                const issuesRatio = openIssues / stars;
+                if (issuesRatio > 1) issuesScore = 20;
+                else if (issuesRatio > 0.5) issuesScore = 40;
+                else if (issuesRatio > 0.2) issuesScore = 55;
+                else if (issuesRatio > 0.1) issuesScore = 65;
+            } else if (openIssues > 50) {
+                issuesScore = 30;
+            }
+            
+            // Calculate raw total
+            let rawScore = activityScore + sizeScore + starsScore + forksScore + watchersScore + featuresScore + ageScore + issuesScore;
+            
+            // Normalize to 1-1000 range
+            let qualityScore = Math.round((rawScore / 900) * 1000);
+            
+            // Apply penalties
+            if (repoData.archived) qualityScore = Math.round(qualityScore * 0.3);
+            if (repoData.disabled) qualityScore = Math.round(qualityScore * 0.1);
+            
+            // Ensure quality score is between 1 and 1000
+            qualityScore = Math.max(1, Math.min(1000, qualityScore));
+            
+            // Calculate Uniqueness Score
+            const forkStarRatio = stars > 0 ? forks / stars : 0;
+            let uniqueness = 100;
+            if (forkStarRatio > 2) uniqueness = 40;
+            else if (forkStarRatio > 1) uniqueness = 60;
+            else if (forkStarRatio > 0.5) uniqueness = 70;
+            else if (forkStarRatio > 0.2) uniqueness = 80;
+            else if (forkStarRatio > 0.1) uniqueness = 85;
+            else if (forkStarRatio > 0) uniqueness = 90;
+            else uniqueness = 95;
+            
+            if (stars === 0 && forks === 0) uniqueness = 75;
+            
+            // Calculate Market Demand
+            const engagementScore = stars + (forks * 2) + (watchers * 0.5);
+            let marketDemand = Math.min(100, Math.round((engagementScore / 100) * 100));
+            if (marketDemand < 10) marketDemand = 10;
+            
+            // Calculate earnings
+            const baseEarnings = (qualityScore / 10) * (marketDemand / 10) + (engagementScore / 10);
+            const hourlyEarnings = Math.max(10, Math.round((baseEarnings * 2) / (30 * 24) * 10) / 10 * 100);
+            const rentalPrice = Math.max(1, Math.round(hourlyEarnings * 24));
+            const royaltyRate = 5;
+            const annualRevenue = Math.round(hourlyEarnings * 24 * 365 * 1.2);
+
+            return {
+                uniqueness: uniqueness,
+                quality: qualityScore,
+                marketDemand: marketDemand,
+                hourlyEarnings: hourlyEarnings,
+                rentalPrice: rentalPrice,
+                royaltyRate: royaltyRate,
+                annualRevenue: annualRevenue,
+                forks: forks,
+                stars: stars,
+                watchers: watchers
+            };
+        }
+
+        async function displayRepositoryResults(repoUrl, username, repoName, metrics, repoData) {
+            // Update repository info
+            document.getElementById('repo-name').textContent = repoName;
+            const description = repoData.description || 'No description available';
+            document.getElementById('repo-description').textContent = description + ' - Analyzed for RealityMash marketplace potential';
+            
+            // Update link
+            const repoLink = document.getElementById('repo-link');
+            if (repoLink && repoUrl) {
+                repoLink.href = repoUrl;
+                repoLink.setAttribute('href', repoUrl);
+            }
+            
+            // Load and display existing wallet address if repository was evaluated before
+            const repositories = await getRepositoriesData();
+            const existingRepo = repositories.find(r => r.url === repoUrl);
+            const walletInput = document.getElementById('sol-wallet-input');
+            if (walletInput) {
+                if (existingRepo && existingRepo.solanaWallet) {
+                    walletInput.value = existingRepo.solanaWallet;
+                } else {
+                    // Keep current value if user has entered something
+                    if (!walletInput.value) {
+                        walletInput.value = '';
+                    }
+                }
+            }
+
+            // Reset bars to 0 first
+            document.getElementById('uniqueness-bar').style.width = '0%';
+            document.getElementById('quality-bar').style.width = '0%';
+            document.getElementById('demand-bar').style.width = '0%';
+            document.getElementById('earnings-bar').style.width = '0%';
+            document.getElementById('rental-bar').style.width = '0%';
+
+            // Reset and animate metrics
+            setTimeout(() => {
+                animateMetric('uniqueness-score', metrics.uniqueness + '%', metrics.uniqueness, 'uniqueness-bar');
+                setTimeout(() => {
+                    // Use the same calculation as in saveRepositoryToRanking - rounded and clamped
+                    const qualityValue = Math.max(1, Math.min(1000, Math.round(metrics.quality)));
+                    animateMetric('quality-score', qualityValue + '/1000', (qualityValue / 1000) * 100, 'quality-bar');
+                    setTimeout(() => {
+                        animateMetric('market-demand', metrics.marketDemand + '%', metrics.marketDemand, 'demand-bar');
+                        setTimeout(() => {
+                            const hourlyEarningsFormatted = metrics.hourlyEarnings.toFixed(1);
+                            const earningsProgress = Math.min(100, (metrics.hourlyEarnings / 5000) * 100);
+                            animateMetric('potential-earnings', hourlyEarningsFormatted + ' $RMASH', 
+                                earningsProgress, 'earnings-bar');
+                            setTimeout(() => {
+                                animateMetric('rental-price', metrics.rentalPrice.toLocaleString() + ' $RMASH', 
+                                    Math.min(100, (metrics.rentalPrice / 100) * 100), 'rental-bar');
+                                setTimeout(() => {
+                                    document.getElementById('annual-revenue').textContent = metrics.annualRevenue.toLocaleString() + ' $RMASH';
+                                }, 200);
+                            }, 200);
+                        }, 200);
+                    }, 200);
+                }, 200);
+            }, 100);
+        }
+
+        function animateMetric(valueId, displayValue, percentage, barId) {
+            const valueElement = document.getElementById(valueId);
+            const barElement = barId ? document.getElementById(barId) : null;
+
+            if (valueElement) {
+                let currentValue = 0;
+                // Extract number from display value (e.g., "750/1000" -> 750)
+                const isFraction1000 = displayValue.includes('/1000');
+                let targetValue;
+                if (isFraction1000) {
+                    // For quality score, extract the number before "/1000"
+                    const match = displayValue.match(/^(\d+)\/1000$/);
+                    targetValue = match ? parseFloat(match[1]) : parseFloat(displayValue.replace(/[^0-9.]/g, ''));
+                } else {
+                    targetValue = parseFloat(displayValue.replace(/[^0-9.]/g, ''));
+                }
+                const isPercentage = displayValue.includes('%');
+                const isRMASH = displayValue.includes('$RMASH');
+                const isFraction = displayValue.includes('/');
+                
+                const hasDecimal = targetValue % 1 !== 0;
+                const isSmallDecimal = hasDecimal && targetValue < 100;
+
+                const increment = targetValue / 50;
+                const interval = setInterval(() => {
+                    currentValue += increment;
+                    if (currentValue >= targetValue) {
+                        currentValue = targetValue;
+                        clearInterval(interval);
+                    }
+
+                    if (isPercentage) {
+                        valueElement.textContent = Math.round(currentValue) + '%';
+                    } else if (isRMASH) {
+                        if (isSmallDecimal) {
+                            valueElement.textContent = currentValue.toFixed(1) + ' $RMASH';
+                        } else {
+                            valueElement.textContent = Math.round(currentValue).toLocaleString() + ' $RMASH';
+                        }
+                    } else if (isFraction1000) {
+                        const clampedValue = Math.max(1, Math.min(1000, currentValue));
+                        const qualityDisplayValue = Math.round(clampedValue);
+                        valueElement.textContent = qualityDisplayValue + '/1000';
+                        
+                        if (barElement) {
+                            const qualityPercentage = (clampedValue / 1000) * 100;
+                            barElement.style.width = Math.min(100, Math.max(0, qualityPercentage)) + '%';
+                        }
+                    } else if (isFraction) {
+                        const fractionParts = displayValue.split('/');
+                        if (fractionParts.length === 2) {
+                            valueElement.textContent = Math.round(currentValue) + '/' + fractionParts[1];
+                        }
+                    } else {
+                        valueElement.textContent = Math.round(currentValue).toLocaleString() + ' $RMASH';
+                    }
+
+                    if (barElement && percentage !== null && !isFraction1000) {
+                        if (isPercentage) {
+                            barElement.style.width = Math.min(100, currentValue) + '%';
+                        } else if (isRMASH) {
+                            barElement.style.width = Math.min(100, percentage) + '%';
+                        } else {
+                            barElement.style.width = Math.min(100, percentage) + '%';
+                        }
+                    }
+                }, 30);
+            }
+        }
+
+
+        // Update ranking table
+        async function updateRankingTable() {
+            const tableData = await getRepositoriesForTable();
+            const repositories = tableData.displayed;
+            const totalCount = tableData.total;
+            const hasMore = tableData.hasMore;
+            const tableBody = document.getElementById('repositories-table-body');
+            const footerMessage = document.getElementById('table-footer-message');
+            
+            if (repositories.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="7" class="empty-table-message">No repositories evaluated yet. Evaluate your first repository to see the ranking!</td></tr>';
+                footerMessage.style.display = 'none';
+                return;
+            }
+            
+            // Clear table
+            tableBody.innerHTML = '';
+            
+            // Add repositories to table (only first 100)
+            repositories.forEach((repo, index) => {
+                const rank = index + 1;
+                const row = document.createElement('tr');
+                
+                // Rank cell with special styling for top 3
+                const rankCell = document.createElement('td');
+                rankCell.className = 'rank-cell';
+                if (rank === 1) rankCell.className += ' rank-1';
+                else if (rank === 2) rankCell.className += ' rank-2';
+                else if (rank === 3) rankCell.className += ' rank-3';
+                rankCell.textContent = rank;
+                
+                // Repository name cell
+                const nameCell = document.createElement('td');
+                nameCell.className = 'repo-name-cell';
+                const nameLink = document.createElement('a');
+                nameLink.href = repo.url;
+                nameLink.target = '_blank';
+                nameLink.rel = 'noopener noreferrer';
+                nameLink.textContent = `${repo.username}/${repo.name}`;
+                nameCell.appendChild(nameLink);
+                
+                // Solana Wallet cell - show only last 4 characters
+                const walletCell = document.createElement('td');
+                walletCell.className = 'score-cell';
+                if (repo.solanaWallet && repo.solanaWallet.trim() !== '') {
+                    const wallet = repo.solanaWallet.trim();
+                    // Show only last 4 characters
+                    const lastFour = wallet.length >= 4 ? wallet.slice(-4) : wallet;
+                    walletCell.textContent = lastFour;
+                    walletCell.style.fontSize = '14px';
+                    walletCell.style.color = 'rgba(255, 255, 255, 0.8)';
+                    walletCell.title = wallet; // Show full wallet on hover
+                } else {
+                    walletCell.textContent = '-';
+                    walletCell.style.color = 'rgba(255, 255, 255, 0.4)';
+                }
+                
+                // Quality Score cell - display same format as in card (already clamped when saved)
+                const qualityCell = document.createElement('td');
+                qualityCell.className = 'score-cell';
+                // Ensure quality score is displayed the same way as in the card - rounded integer
+                const qualityValue = Math.max(1, Math.min(1000, Math.round(repo.metrics.quality)));
+                qualityCell.textContent = `${qualityValue}/1000`;
+                
+                // Potential Earnings cell
+                const earningsCell = document.createElement('td');
+                earningsCell.className = 'score-cell';
+                earningsCell.textContent = `${repo.metrics.hourlyEarnings.toFixed(1)} $RMASH/h`;
+                
+                // Uniqueness cell
+                const uniquenessCell = document.createElement('td');
+                uniquenessCell.className = 'score-cell';
+                uniquenessCell.textContent = `${repo.metrics.uniqueness}%`;
+                
+                // Market Demand cell
+                const demandCell = document.createElement('td');
+                demandCell.className = 'score-cell';
+                demandCell.textContent = `${repo.metrics.marketDemand}%`;
+                
+                // Append cells to row
+                row.appendChild(rankCell);
+                row.appendChild(nameCell);
+                row.appendChild(walletCell);
+                row.appendChild(qualityCell);
+                row.appendChild(earningsCell);
+                row.appendChild(uniquenessCell);
+                row.appendChild(demandCell);
+                
+                // Append row to table
+                tableBody.appendChild(row);
+            });
+            
+            // Show footer message if there are more repositories
+            if (hasMore) {
+                const remainingCount = totalCount - repositories.length;
+                footerMessage.textContent = `Еще ${remainingCount} ${remainingCount === 1 ? 'человек' : remainingCount < 5 ? 'человека' : 'человек'}`;
+                footerMessage.style.display = 'block';
+            } else {
+                footerMessage.style.display = 'none';
+            }
+        }
+
+        // Allow Enter key to submit repository evaluation
+        document.addEventListener('DOMContentLoaded', async function() {
+            const repoInput = document.getElementById('repo-url-input');
+            if (repoInput) {
+                repoInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        evaluateRepository();
+                    }
+                });
+            }
+            
+            // Initialize repositories data and load ranking table on page load
+            await initializeRepositoriesData();
+            await updateRankingTable();
+        });
+
+        // Защита от просмотра исходного кода
+        // Запрет копирования текста (кроме полей ввода)
+        document.addEventListener('copy', function(e) {
+            const target = e.target;
+            if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        document.addEventListener('cut', function(e) {
+            const target = e.target;
+            if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Запрет выделения текста (кроме полей ввода)
+        document.addEventListener('selectstart', function(e) {
+            const target = e.target;
+            if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Блокировка контекстного меню (правая кнопка мыши)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Блокировка горячих клавиш для просмотра кода
+        document.addEventListener('keydown', function(e) {
+            const target = e.target;
+            const isInput = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA';
+            
+            // Разрешить стандартные горячие клавиши в полях ввода
+            if (isInput) {
+                // Разрешить Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X, Backspace, Delete, Arrow keys в input
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A' || e.key === 'c' || e.key === 'C' || e.key === 'v' || e.key === 'V' || e.key === 'x' || e.key === 'X')) {
+                    return true;
+                }
+                if (e.key === 'Backspace' || e.key === 'Delete' || e.key.startsWith('Arrow') || e.key === 'Home' || e.key === 'End') {
+                    return true;
+                }
+            }
+            
+            // Блокировка F12 (Developer Tools)
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Блокировка Ctrl+Shift+I (Developer Tools)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i')) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Блокировка Ctrl+Shift+J (Console)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'J' || e.key === 'j')) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Блокировка Ctrl+U (View Source)
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Блокировка Ctrl+S (Save Page)
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'S' || e.key === 's') && !isInput) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Блокировка Ctrl+P (Print)
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'P' || e.key === 'p')) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Блокировка Ctrl+Shift+C (Inspect Element)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Блокировка Ctrl+A (Select All) вне полей ввода
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'A' || e.key === 'a') && !isInput) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Блокировка двойного клика для выделения
+        document.addEventListener('mousedown', function(e) {
+            const target = e.target;
+            if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA' && target.tagName !== 'BUTTON' && target.tagName !== 'A') {
+                if (e.detail > 1) {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        });
+
+        // Блокировка drag & drop
+        document.addEventListener('dragstart', function(e) {
+            const target = e.target;
+            if (target.tagName !== 'INPUT' && target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Дополнительная защита: блокировка открытия DevTools через проверку размера окна
+        let devtools = {
+            open: false,
+            orientation: null
+        };
+        
+        setInterval(function() {
+            if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+                if (!devtools.open) {
+                    devtools.open = true;
+                    // Можно добавить редирект или предупреждение
+                }
+            } else {
+                devtools.open = false;
+            }
+        }, 500);
+
+        // Блокировка просмотра исходного кода через консоль
+        (function() {
+            function disableDevTools() {
+                if (typeof console !== 'undefined') {
+                    if (console.clear) console.clear();
+                    console.log = function() {};
+                    console.warn = function() {};
+                    console.error = function() {};
+                    console.info = function() {};
+                    console.debug = function() {};
+                }
+            }
+            disableDevTools();
+            setInterval(disableDevTools, 1000);
+        })();
+    </script>
+</body>
+</html>
+
