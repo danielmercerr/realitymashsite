@@ -1,2 +1,44 @@
-[]
-
+[
+  {
+    "url": "https://github.com/solana-labs/solana",
+    "username": "solana-labs",
+    "name": "solana",
+    "description": "Web-Scale Blockchain for fast, secure, scalable, decentralized apps and marketplaces.",
+    "solanaWallet": "JBveyMWfV76qFYn96PqNnmBD6EkXVv6cFvBDWg9QNdRt",
+    "metrics": {
+      "uniqueness": 80,
+      "quality": 267,
+      "marketDemand": 100,
+      "hourlyEarnings": 980.0000000000001,
+      "rentalPrice": 23520,
+      "royaltyRate": 5,
+      "annualRevenue": 10301760,
+      "stars": 14644,
+      "forks": 5347,
+      "watchers": 14644
+    },
+    "evaluatedAt": "2025-11-11T13:48:37.888Z",
+    "combinedScore": 276.8
+  },
+  {
+    "url": "https://github.com/vixentael/security-data-management-for-app-devs-workshop",
+    "username": "vixentael",
+    "name": "security-data-management-for-app-devs-workshop",
+    "description": "Workshop for try!swift world",
+    "solanaWallet": "2ARsSAVEi4r1ch6tcjh1jSECxKcSRXSzGFDX5bgH7237",
+    "metrics": {
+      "uniqueness": 85,
+      "quality": 302,
+      "marketDemand": 33,
+      "hourlyEarnings": 30,
+      "rentalPrice": 720,
+      "royaltyRate": 5,
+      "annualRevenue": 315360,
+      "stars": 18,
+      "forks": 3,
+      "watchers": 18
+    },
+    "evaluatedAt": "2025-11-11T13:16:31.458Z",
+    "combinedScore": 302.3
+  }
+]
