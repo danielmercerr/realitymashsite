@@ -61,5 +61,26 @@
     },
     "evaluatedAt": "2025-11-11T14:23:52.399Z",
     "combinedScore": 328.5
+  },
+  {
+    "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+    "username": "freeCodeCamp",
+    "name": "freeCodeCamp",
+    "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
+    "solanaWallet": "AU1LXVAChdbgmbLLFTqBWEFTijEY9xYHd9W13F8LsJKS",
+    "metrics": {
+      "uniqueness": 90,
+      "quality": 944,
+      "marketDemand": 100,
+      "hourlyEarnings": 20600,
+      "rentalPrice": 494400,
+      "royaltyRate": 5,
+      "annualRevenue": 216547200,
+      "stars": 431584,
+      "forks": 42321,
+      "watchers": 431584
+    },
+    "evaluatedAt": "2025-11-11T15:48:21.509Z",
+    "combinedScore": 1150
   }
 ]
